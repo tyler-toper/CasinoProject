@@ -53,7 +53,7 @@ private:
     Card collective[52];
     bool isEmpty = false;
     int index = 0;
-    string suits[4] = {"Spades","Hearts","Clubs","Diamonds"};
+    string suits[4];
 
 public:
     //The Constructors
@@ -66,23 +66,23 @@ public:
 //The Constructors
 Deck::Deck() {
     int tempVal = 0;
-    for(int i = 0; i < 52; ++i){
-        if(i%4 == 0){
-            tempVal++;
-        }
+    suits[0] = "Spades";
+    suits[1] = "Hearts";
+    suits[2] = "Clubs";
+    suits[3] = "Diamonds";
 
-        switch(i%4){
-            case 0:
-                collective[i].set(tempVal,suits[0]);
-            case 1:
-                collective[i].set(tempVal,suits[1]);
-            case 2:
-                collective[i].set(tempVal,suits[2]);
-            case 3:
-                collective[i].set(tempVal,suits[3]);
-        }
+    for(int i = 0; i < 13; ++i){
+
+        Card hearts = Card(i + 1,"Hearts");
+        Card diamonds = Card(i + 1,"Diamonds");
+        Card clubs = Card(i + 1,"Clubs");
+        Card spades = Card(i + 1,"Spades");
+
+        collective[i] = hearts;
+        collective[i+13] = diamonds;
+        collective[i+26] = clubs;
+        collective[i+39] = spades;
     }
-
 }
 
 //The Methods
