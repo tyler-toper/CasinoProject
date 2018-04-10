@@ -1,6 +1,8 @@
 // Created by Tyler Toper on 3/28/2018.
 
 #include <iostream>
+#include <ctime>    // For time()
+#include <cstdlib>  // For srand() and rand()
 using namespace std;
 
 //
@@ -23,7 +25,7 @@ public:
     void print();
 };
 
-///Card Methods
+///Card Methods and Constructors
 ///Constructors
 //Generic Constructor
 Card::Card() {
@@ -47,7 +49,8 @@ void Card::print() {
 }
 
 
-///The deck the game draws from
+///The Deck the games will draw from
+//Note: The cards are from 1-13, will need to be translated into Aces, Jacks, Queens, and Kings
 class Deck{
 private:
     Card collective[52];
@@ -56,13 +59,18 @@ private:
     string suits[4];
 
 public:
-    //The Constructors
+    ///The Constructors
     Deck();
 
-    //The Methods
+    ///The Methods
+    //This is a test function that prints the deck out to console
     void printDeck();
+
+    //This randomizes the order of the Cards in the Deck
+    void shuffle();
 };
 
+///Deck Methods and Constructors
 //The Constructors
 Deck::Deck() {
     int tempVal = 0;
@@ -86,11 +94,23 @@ Deck::Deck() {
 }
 
 //The Methods
-//Prints the deck
+//Prints the Deck
 void Deck::printDeck() {
     for(int i = 0; i < 52; ++i){
         collective[i].print();
         std::cout << "\n";
+    }
+}
+
+//Randomizes the order of the Cards in the Deck
+void Deck::shuffle() {
+    index = 0;
+    srand(time(0));
+    for(int i = 0; i < 52; i++){
+        Card temp = Card();
+        temp = collective[i];
+        int r = rand()%10 +1;
+        collective[i] = collective[i];
     }
 }
 #endif //GROUPCASINOPROJECT_CARDANDDECK_H
