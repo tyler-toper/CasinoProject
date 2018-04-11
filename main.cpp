@@ -1,8 +1,7 @@
 #include <iostream>
 #include "CardAndDeck.h"
+#include "Player.h"
 
 int main() {
-    Deck test = Deck();
-    test.printDeck();
     return 0;
 }

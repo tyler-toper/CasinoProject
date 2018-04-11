@@ -29,7 +29,7 @@ public:
 
 ///Card Methods and Constructors
 ///Constructors
-//Generic Constructor
+//Generic Constructor (makes a blank card)
 Card::Card() {
     this->suit = "";
     this->value = 0;
@@ -79,6 +79,12 @@ public:
 
     //This randomizes the order of the Cards in the Deck
     void shuffle();
+
+    //Draws a card from the deck at a specific index
+    Card draw();
+
+    //Returns how many cards are left to draw
+    int getSize();
 };
 
 ///Deck Methods and Constructors
@@ -106,7 +112,7 @@ Deck::Deck() {
 }
 
 //The Methods
-//Prints the Deck
+//Prints the Deck to console
 void Deck::printDeck() {
     for(int i = 0; i < 52; ++i){
         collective[i].print();
@@ -117,6 +123,7 @@ void Deck::printDeck() {
 //Randomizes the order of the Cards in the Deck
 void Deck::shuffle() {
     index = 0;
+    isEmpty = false;
     srand(time(NULL));
     //Front to back Shuffle
     for(int i = 0; i < 52; i++){
@@ -134,5 +141,23 @@ void Deck::shuffle() {
         collective[i] = collective[r];
         collective[r] = temp;
     }
+}
+
+//Draws a card from the deck
+Card Deck::draw(){
+    if(isEmpty){
+        return;
+    }
+    Card temp = collective[index];
+    index++;
+    if(index >= 52){
+        isEmpty = true;
+    }
+    return temp;
+}
+
+//Returns how many cards are left to draw
+int Deck::getSize() {
+    return (52-index);
 }
 #endif //GROUPCASINOPROJECT_CARDANDDECK_H
