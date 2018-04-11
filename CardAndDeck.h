@@ -23,6 +23,8 @@ public:
     //The Methods
     void set(int value, string suit);
     void print();
+    int getValue();
+    string getSuit();
 };
 
 ///Card Methods and Constructors
@@ -40,14 +42,23 @@ Card::Card(int value, string suit) {
 }
 
 ///The Methods
+//Sets a card to a specific value and suit
 void Card::set(int value, string suit) {
     this->suit = suit;
     this->value = value;
 }
+//Print the card to console
 void Card::print() {
     std::cout << value << " of " << suit;
 }
-
+//Returns the Value
+int Card::getValue() {
+    return value;
+}
+//Returns the Suit
+string Card::getSuit() {
+    return suit;
+}
 
 ///The Deck the games will draw from
 //Note: The cards are from 1-13, will need to be translated into Aces, Jacks, Queens, and Kings
@@ -91,6 +102,7 @@ Deck::Deck() {
         collective[i+26] = clubs;
         collective[i+39] = spades;
     }
+    shuffle();
 }
 
 //The Methods
