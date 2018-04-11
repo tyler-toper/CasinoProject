@@ -105,12 +105,22 @@ void Deck::printDeck() {
 //Randomizes the order of the Cards in the Deck
 void Deck::shuffle() {
     index = 0;
-    srand(time(0));
+    srand(time(NULL));
+    //Front to back Shuffle
     for(int i = 0; i < 52; i++){
         Card temp = Card();
         temp = collective[i];
-        int r = rand()%10 +1;
-        collective[i] = collective[i];
+        int r = rand()%(52-i);
+        collective[i] = collective[r];
+        collective[r] = temp;
+    }
+    //Back to front Shuffle
+    for(int i = 51; i >= 0; i--){
+        Card temp = Card();
+        temp = collective[i];
+        int r = rand()%(i+1);
+        collective[i] = collective[r];
+        collective[r] = temp;
     }
 }
 #endif //GROUPCASINOPROJECT_CARDANDDECK_H
