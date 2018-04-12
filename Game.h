@@ -9,13 +9,13 @@ class Game{
 private:
     ///Methods to be used while playing the game
     //Deals cards to all players
-    virtual void dealAll();
+    virtual void dealAll() = 0;
 
     //Deals a card to a player
-    virtual void dealOne(int playerNum);
+    virtual void dealOne(int playerNum) = 0;
 public:
     //The method to run to play the game
-    virtual void play();
+    virtual void play() = 0;
 };
 
 

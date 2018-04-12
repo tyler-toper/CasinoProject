@@ -20,13 +20,22 @@ private:
     void dealOne(int playerNum);
 public:
     Blackjack();
+    void play();
 };
 
 Blackjack::Blackjack() {
     deck = Deck();
 }
 
+void Blackjack::play(){
+
+}
+
 void Blackjack::dealAll() {
+
+}
+
+void Blackjack::dealOne(int playerNum) {
 
 }
 #ifndef GROUPCASINOPROJECT_BLACKJACK_H
