@@ -1,5 +1,3 @@
-// Created by Tyler Toper on 3/28/2018.
-
 #include <iostream>
 #include <ctime>    // For time()
 #include <cstdlib>  // For srand() and rand()
@@ -25,6 +23,7 @@ public:
     void print();
     int getValue();
     string getSuit();
+    string getPicName();
 };
 
 ///Card Methods and Constructors
@@ -47,25 +46,34 @@ void Card::set(int value, string suit) {
     this->suit = suit;
     this->value = value;
 }
+
 //Print the card to console
 void Card::print() {
     std::cout << value << " of " << suit;
 }
+
 //Returns the Value
 int Card::getValue() {
     return value;
 }
+
 //Returns the Suit
 string Card::getSuit() {
     return suit;
 }
 
+//Returns the Picture Name
+string Card::getPicName() {
+    string temp = suit;
+    temp += to_string(value);
+    return temp;
+}
 ///The Deck the games will draw from
 //Note: The cards are from 1-13, will need to be translated into Aces, Jacks, Queens, and Kings
 class Deck{
 private:
     Card collective[52];
-    bool isEmpty = false;
+    bool empty = false;
     int index = 0;
     string suits[4];
 
@@ -85,6 +93,9 @@ public:
 
     //Returns how many cards are left to draw
     int getSize();
+
+    //Returns if the deck is empty
+    bool isEmpty();
 };
 
 ///Deck Methods and Constructors
@@ -98,10 +109,10 @@ Deck::Deck() {
 
     for(int i = 0; i < 13; ++i){
 
-        Card hearts = Card(i + 1,"Hearts");
-        Card diamonds = Card(i + 1,"Diamonds");
-        Card clubs = Card(i + 1,"Clubs");
-        Card spades = Card(i + 1,"Spades");
+        Card hearts = Card(i + 1,"Heart");
+        Card diamonds = Card(i + 1,"Diamond");
+        Card clubs = Card(i + 1,"Club");
+        Card spades = Card(i + 1,"Spade");
 
         collective[i] = hearts;
         collective[i+13] = diamonds;
@@ -123,7 +134,7 @@ void Deck::printDeck() {
 //Randomizes the order of the Cards in the Deck
 void Deck::shuffle() {
     index = 0;
-    isEmpty = false;
+    empty = false;
     srand(time(NULL));
     //Front to back Shuffle
     for(int i = 0; i < 52; i++){
@@ -145,14 +156,14 @@ void Deck::shuffle() {
 
 //Draws a card from the deck
 Card Deck::draw(){
-    if(isEmpty){
+    if(empty){
         Card temp = Card();
         return temp;
     }
     Card temp = collective[index];
     index++;
     if(index >= 52){
-        isEmpty = true;
+        empty = true;
     }
     return temp;
 }
@@ -160,5 +171,10 @@ Card Deck::draw(){
 //Returns how many cards are left to draw
 int Deck::getSize() {
     return (52-index);
+}
+
+//Returns if the deck is empty
+bool Deck::isEmpty() {
+    return empty;
 }
 #endif //GROUPCASINOPROJECT_CARDANDDECK_H

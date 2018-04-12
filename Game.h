@@ -1,6 +1,3 @@
-//
-// Created by Tyler Toper on 4/11/2018.
-//
 #include "Player.h"
 #include "CardAndDeck.h"
 #include <iostream>

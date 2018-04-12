@@ -1,7 +1,3 @@
-//
-// Created by Tyler Toper on 4/11/2018.
-//
-
 #include "CardAndDeck.h"
 #include <iostream>
 #ifndef GROUPCASINOPROJECT_PLAYER_H
