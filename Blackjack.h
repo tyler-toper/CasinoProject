@@ -11,7 +11,13 @@ private:
     Deck deck;
     Card table[5];
     Player players[4];
-   //Methods
+    int numPlayers = 4;
+    ///Methods to be used while playing the game
+    //Deals cards to all players
+    void dealAll();
+
+    //Deals a card to a player
+    void dealOne(int playerNum);
 public:
     Blackjack();
 };
@@ -20,6 +26,9 @@ Blackjack::Blackjack() {
     deck = Deck();
 }
 
+void Blackjack::dealAll() {
+
+}
 #ifndef GROUPCASINOPROJECT_BLACKJACK_H
 #define GROUPCASINOPROJECT_BLACKJACK_H
 
