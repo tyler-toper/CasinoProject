@@ -146,7 +146,8 @@ void Deck::shuffle() {
 //Draws a card from the deck
 Card Deck::draw(){
     if(isEmpty){
-        return;
+        Card temp = Card();
+        return temp;
     }
     Card temp = collective[index];
     index++;

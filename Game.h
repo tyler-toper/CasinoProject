@@ -7,24 +7,15 @@
 
 class Game{
 private:
-    virtual Player players[] = 0;
-    Deck deck = deck();
-    virtual Card table[] = 0;
-    int pot = 0;
-
     ///Methods to be used while playing the game
     //Deals cards to all players
-    virtual void dealAll() = 0;
+    virtual void dealAll();
 
     //Deals a card to a player
-    virtual void dealOne(int playerNum) = 0;
+    virtual void dealOne(int playerNum);
 public:
-    //The game constructor
-    virtual Game(Player* players) = 0;
-
     //The method to run to play the game
-    virtual void play() = 0;
-
+    virtual void play();
 };
 
 
