@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "CardAndDeck.h"
 #include <iostream>
+#include <vector>
 
 class Game{
 private:

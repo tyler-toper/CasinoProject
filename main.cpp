@@ -10,5 +10,6 @@ int main() {
     players.push_back(one);
     Blackjack temp = Blackjack(players);
     temp.play();
+    std::cout << "Player " << one.getName() << "'s remaining balance: " << one.getMoney() << std::endl;
     return 0;
 }
