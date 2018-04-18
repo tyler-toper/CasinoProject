@@ -4,6 +4,7 @@
 
 class Game{
 private:
+    int maxPlayers;
     ///Methods to be used while playing the game
     //Deals cards to all players
     virtual void dealAll() = 0;

@@ -2,12 +2,13 @@
 #include "CardAndDeck.h"
 #include "Player.h"
 #include "Blackjack.h"
+#include <vector>
 
 int main() {
-    Deck temp = Deck();
-    while(!temp.isEmpty()) {
-        Card pint = temp.draw();
-        std::cout << pint.getPicName() << std::endl;
-    }
+    vector<Player> players;
+    Player one = Player("Keepo",500);
+    players.push_back(one);
+    Blackjack temp = Blackjack(players);
+    temp.play();
     return 0;
 }
