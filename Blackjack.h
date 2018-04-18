@@ -8,7 +8,6 @@ private:
     Deck deck;
     Card table[5];
     vector<Player> players;
-    int maxPlayers = 4;
     int currentPlayers = 0;
     Player dealer;
 
@@ -30,17 +29,24 @@ Blackjack::Blackjack(vector<Player> playerList) {
     deck = Deck();
     dealer = Player("The Dealer", 15000);
     players = playerList;
-    if(players.size() > maxPlayers){
-        throw std::overflow_error("Too Many Players");
-    }
-    while(players.size() != maxPlayers){
-        Player bot = Player();
-        players.push_back(bot);
-    }
 }
 
-void Blackjack::play(){
+void Blackjack::play() {
+    bool play = true;
+    int wager = 0;
+    int pot = 2;
+    while (play) {
+        for (int i = 0; i < players.size(); i++) {
+            std::cout <<"What is your wager " << players.at(i).getName() << "?" << std::endl;
+            std::cin >> wager;
+            while(wage < players.at(i).getMoney()){
 
+            }
+            while(wager < pot){
+
+            }
+        }
+    }
 }
 
 void Blackjack::dealAll() {
@@ -51,6 +57,10 @@ void Blackjack::dealAll() {
 }
 
 void Blackjack::dealOne(string playerName) {
+    if(playerName.compare("The Dealer")){
+        dealer.drawCard(deck.draw());
+    }
+
     for(int i = 0; i < players.size(); i++){
         if(players.at(i).getName().compare(playerName) == 0){
             players.at(i).drawCard(draw());
